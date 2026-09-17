@@ -1077,7 +1077,7 @@ fn stroke_and_fill_path(
             */
 
             let inner_rad = 0.5 * (stroke.width - feathering);
-            let outer_rad = 0.5 * (stroke.width + feathering);
+            let outer_rad = f32::midpoint(stroke.width, feathering);
 
             match path_type {
                 PathType::Closed => {
@@ -2305,7 +2305,7 @@ impl Tessellator {
         clipped_primitives: Vec<ClippedPrimitive>,
     ) -> Vec<ClippedPrimitive> {
         self.clip_rect = Rect::EVERYTHING;
-        let stroke = Stroke::new(2.0, Color32::from_rgb(150, 255, 150));
+        let stroke = Stroke::new(2.0_f32, Color32::from_rgb(150, 255, 150));
 
         clipped_primitives
             .into_iter()

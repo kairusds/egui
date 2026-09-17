@@ -101,7 +101,7 @@ impl Mesh {
     /// Iterate over the triangles of this mesh, returning vertex indices.
     pub fn triangles(&self) -> impl Iterator<Item = [u32; 3]> + '_ {
         self.indices
-            .chunks_exact(3)
+            .as_chunks::<3>().0.iter()
             .map(|chunk| [chunk[0], chunk[1], chunk[2]])
     }
 

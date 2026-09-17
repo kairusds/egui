@@ -116,7 +116,7 @@ pub fn circular_in_out(t: f32) -> f32 {
     if t < 0.5 {
         0.5 * (1. - (1. - 4. * t * t).sqrt())
     } else {
-        0.5 * ((-(2. * t - 3.) * (2. * t - 1.)).sqrt() + 1.)
+        f32::midpoint((-(2. * t - 3.) * (2. * t - 1.)).sqrt(), 1.)
     }
 }
 

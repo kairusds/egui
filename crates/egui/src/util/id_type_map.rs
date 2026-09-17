@@ -37,21 +37,21 @@ impl nohash_hasher::IsEnabled for TypeId {}
 
 #[cfg(feature = "persistence")]
 pub trait SerializableAny:
-    'static + Any + Clone + serde::Serialize + for<'a> serde::Deserialize<'a> + Send + Sync
+    'static + Any + Clone + serde::Serialize + serde::Deserialize<'a> + Send + Sync
 {
 }
 
 #[cfg(feature = "persistence")]
 impl<T> SerializableAny for T where
-    T: 'static + Any + Clone + serde::Serialize + for<'a> serde::Deserialize<'a> + Send + Sync
+    T: 'static + Any + Clone + serde::Serialize + serde::Deserialize<'a> + Send + Sync
 {
 }
 
 #[cfg(not(feature = "persistence"))]
-pub trait SerializableAny: 'static + Any + Clone + for<'a> Send + Sync {}
+pub trait SerializableAny: 'static + Any + Clone + Send + Sync {}
 
 #[cfg(not(feature = "persistence"))]
-impl<T> SerializableAny for T where T: 'static + Any + Clone + for<'a> Send + Sync {}
+impl<T> SerializableAny for T where T: 'static + Any + Clone + Send + Sync {}
 
 // -----------------------------------------------------------------------------------------------
 

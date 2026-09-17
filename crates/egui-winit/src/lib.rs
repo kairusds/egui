@@ -784,8 +784,6 @@ impl State {
 
             state,
 
-            location: _, // e.g. is it on the numpad?
-            repeat: _,   // egui will figure this out for us
             ..
         } = event;
 
