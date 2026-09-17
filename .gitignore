@@ -9,3 +9,5 @@
 /.vscode
 /media/*
 .idea/
+.envrc
+
